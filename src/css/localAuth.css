@@ -1,0 +1,111 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #262323;
+    font-size: 30px;
+    
+}
+
+.container form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Adjust width as needed */
+}
+
+.container form input {
+    display: block;
+    width: 92%;
+    padding: 10px;
+    margin-bottom: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.container form button {
+    width: 100%;
+    padding: 12px;
+    background-color: #101e11;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.container form button:hover {
+    background-color: #0f140f;
+}
+
+.container form button:hover {
+    background-color: #6a98d7;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 8px rgba(147, 48, 48, 0.1);
+}
+
+/* Hover effect for input fields */
+.container form input:hover {
+    border-color: #131f14;
+}
+
+/* Hover effect for the register title */
+.container h1:hover {
+    color: #3fb1d1;
+    transform: scale(1.25);
+    transition: transform 0.4s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+.full-recipe-btn {
+    background-color: #4CAF50; /* Green background */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Hover effect */
+.full-recipe-btn:hover {
+    background-color: #45a049; /* Darker green */
+}
+
+/* Style for the "Register Now" link */
+.login-link,.register-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #384048; /* Blue color for the link */
+    text-decoration: none; /* Remove default underline */
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+.login-link:hover,.register-link:hover {
+    color: #0056b3; /* Darker blue color on hover */
+    transform: scale(1.1)
+}
+
+

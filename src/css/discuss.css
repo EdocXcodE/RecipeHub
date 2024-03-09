@@ -1,0 +1,209 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+.chat-messages {
+    overflow-y: auto;
+    height: 400px;
+    padding: 20px;
+}
+
+.chat-input {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+
+#chatInput {
+    width: 400px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+    flex:1;
+    padding: 10px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#sendButton {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#sendButton:hover {
+    background-color: #0056b3;
+}
+
+/* Chat bubble styles */
+.chat-bubble {
+    max-width: 70%;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    clear: both;
+}
+
+.user-message {
+    float: right;
+    background-color: #007bff;
+    color: #fff;
+}
+
+.user-message:hover {
+    transform: scale(1.05);
+}
+
+.other-message {
+    float: left;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+/* Sender name and timestamp */
+.message-info {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: #999;
+}
+
+
+/* Hover effect for chat bubble */
+.other-message:hover {
+    transform: scale(1.05);
+    background-color: #e0e0e0;
+}
+
+/* Sender name and timestamp */
+.message-info {
+    font-size: 12px;
+    color: #666;
+}
+
+/* Message content */
+.message-content {
+    margin-top: 5px;
+}
+
+/* Like button container */
+.like-container {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+/* Like button */
+.like-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    margin-right: 5px;
+    transition: color 0.3s;
+}
+
+/* Hover effect for like button */
+.like-button:hover {
+    color: #ff7f50; /* Coral color */
+}
+
+/* Like count */
+.like-count {
+    color: #666;
+    margin-left: 5px;
+}
+
+/* Thumb up/down emoji */
+.like-button::before {
+    content: '';
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    margin-right: 0.25em;
+}
+
+/* Thumbs up emoji */
+.like-button.like::before {
+    content: '\1F44D'; /* Thumbs up emoji */
+}
+
+/* Thumbs down emoji */
+.like-button.dislike::before {
+    content: '\1F44E'; /* Thumbs down emoji */
+}
+
+
+.container {
+    max-width: 700px;
+    margin: 100px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.discussion-section {
+    color: rgb(123, 114, 133);
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Add transition effect */
+    padding: 10px 20px; /* Add padding to create space around the text */
+    border: 2px solid rgb(122, 120, 125); /* Add border */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+.discussion-section:hover {
+    transform: scale(1.1); /* Scale effect on hover */
+}
+
+.delete-button {
+    
+    font-size: 16px; 
+    color: red; 
+    cursor: pointer; /* Change cursor to pointer on hover */
+    transition: transform 0.3s ease; /* Add transition effect */
+    /* Flexbox properties */
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Align horizontally to the center */
+    align-items: center; /* Align vertically to the center */
+    width: 24px; /* Set width to maintain button size */
+    height: 24px; /* Set height to maintain button size */
+}
+
+.delete-button:hover {
+    transform: scale(1.2); /* Scale effect on hover */
+}
+
+#backButton {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    margin-left: 20px;
+    background-color: #798779;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#backButton:hover {
+    transform: scale(1.05); /* Scale effect on hover */
+}
+
+

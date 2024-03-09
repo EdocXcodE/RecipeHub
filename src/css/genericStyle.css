@@ -1,0 +1,489 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: white;
+    background-size: cover;
+}
+
+.container {
+    max-width: 900px;
+    margin: 200px auto;
+    padding: 100px;
+    background-color: rgba(255, 255, 255, 0.978);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure relative positioning for absolute positioning of buttons */
+}
+
+.title {
+    color: #b35959;
+    font-size: 48px;
+    margin-bottom: 100px;
+    text-align: center;
+    opacity: 0; /* Initially hide the title */
+    animation: fadeIn 1s ease-in-out forwards; /* Fade in animation with 2 seconds duration */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; } /* Start with opacity 0 */
+    to { opacity: 1; } /* End with opacity 1 */
+}
+
+.title:hover {
+    color: #27ca34;
+    transform: scale(1.20);
+    transition: transform 0.4s ease-in-out, color 0.3s ease-in-out;
+}
+
+
+#searchInput {
+    margin-left: 230px;
+    margin-right: 150px;
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 40px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center; /* Center the text */
+}
+
+#searchButton {
+  background-color: #27ca34;
+  color: white;
+  margin-left: 330px;
+  margin-right: 150px;
+  width: 30%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  text-align: center; /* Center the text */
+}
+
+#searchButton:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+#logoutButton {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    margin-left: 20px;
+    background-color: #798779;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#discussButton
+{
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    margin-left: 120px;
+    background-color: #798779;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+
+#discussButton:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+
+#logoutButton:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+
+.results-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    font-size: 17px;
+    text-align: center;
+}
+
+.recipe {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.recipe:hover {
+    transform: translateY(-5px);
+    transform: scale(1.1);
+}
+
+.recipe img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 24px;
+    color: #fff;
+    background: linear-gradient(135deg, #00f0ff, #0080ff, #00ff80, #ff8000, #ff0040, #00f0ff);
+    background-size: 600% 600%;
+    animation: loadingAnimation 4s ease infinite;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+.container .recipe button {
+    display: inline; /* Initially hide the buttons */
+    margin-top: 10px; /* Add some top margin */
+    padding: 10px 20px;
+    border: rgb(69, 119, 162);
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    margin-left: 12px;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+
+.container .recipe button:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+}
+
+
+.saved-recipes-btn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #798779;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+
+.saved-recipes-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+
+.hidden {
+    display: none;
+}
+
+.filter-container {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.filter-container input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+.filter-container {
+    margin-bottom: 30px;
+    text-align: center;
+    border-radius: 8px;
+    padding: 10px;
+    transition: background-color 0.3s;
+}
+
+.filter-container:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.3s;
+}
+
+.filter-container input[type="text"] {
+    padding: 10px;
+    width: 80%;
+    max-width: 300px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+.filter-container input[type="text"]:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+}
+
+/* Style for chatbot window */
+#chatbotWindow {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 600px;
+    height: 600px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow-y: scroll;
+    padding: 10px;
+    margin-bottom: 35px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards;
+}
+
+#chatbotWindow.open {
+    display:block;
+    border-radius: 10px 10px 10px 10px;
+    animation: slideIn 0.5s forwards, fadeIn 0.5s forwards;
+}
+
+/* Style for bot emoji */
+#chatbotButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1001; /* Ensure it's above the chatbot window */
+    animation: pulse 1s infinite alternate;
+}
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.2);
+    }
+}
+
+
+
+/* Chatbox window */
+#chatMessages {
+    overflow-y: auto;
+    max-height: 600px;
+    padding: 10px;
+  }
+  
+  /* Message container */
+  .message-container {
+    margin-bottom: 10px;
+  }
+  
+  /* User message */
+  .user-message {
+    text-align: right;
+  }
+  
+  /* Bot message */
+  .bot-message {
+    align-self: flex-start; 
+    margin: 5px 0;
+    text-align: left;
+    color: #000000;
+  }
+  
+  /* User message bubble */
+  .user-message .message-bubble {
+    background-color: #f7f5f5;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px;
+    
+  }
+  
+  /* Bot message bubble */
+  .bot-message .message-bubble {
+    background-color: #f0f0f0;
+    border-radius: 15px 15px 15px 15px;
+    padding: 10px;
+    margin: 5px;
+    display: inline-flexbox;
+  }
+
+  .chatbot-window {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end; /* Align items to the end of the container */
+    margin-top: 10px; 
+  }
+  
+  /* CSS for chat input field */
+  #chatInput {
+    position: fixed;
+    position: relative;
+    width: 70%;
+    padding: 10px;
+    
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* CSS for send button */
+  #sendButton {
+    background-color: #305a70; 
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 10px; 
+    transition: background-color 0.3s ease;
+  }
+  
+  /* Hover effect for send button */
+  #sendButton:hover {
+    background-color: #45a049; /* Darker green on hover */
+  }
+  
+  .message-container.show {
+    opacity: 1; /* Show messages */
+    transform: translateY(0); /* Move messages upward */
+  }
+  
+  /* Chat input and send button animation */
+  #chatInput, #sendButton {
+    transition: transform 0.3s ease; 
+  }
+  
+  #chatInput:focus, #sendButton:hover {
+    transform: translateY(-5px); /* Move input and button upward on focus/hover */
+  }
+  
+
+  
+  /* Hover effect for send button */
+  #sendButton:hover {
+    background-color: #407080; /* Darker background color on hover */
+  }
+  
+  /* Hover effect for bot emoji */
+  #chatbotButton:hover {
+    transform: scale(1.2); /* Increase size on hover */
+  }
+  
+  .user-message .message-bubble:hover {
+    background-color: #c8cdd5; /* Lighter background color on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+    transform: scale(1.01);
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  }
+  
+  /* hover effect for bot messages */
+  .bot-message .message-bubble:hover {
+    background-color: #c8cdd5;  /* Lighter background color on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+    transform: scale(1.01);
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transition */
+  }
+  
+  /* Animation for message appearance */
+  .message-container {
+    opacity: 0; /* Initially hide message */
+    animation: appear 1.5s ease forwards; /* Slide up animation */
+  }
+  
+  @keyframes appear {
+    to {
+      opacity: 1; /* Fully show message */
+      transform: translateY(0); /* Slide up */
+    }
+  }
+  
+  
+  /* Advanced hover effect for chat input */
+  #chatInput:hover {
+    border-color: #aaa; /* Darker border color on hover */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow on hover */
+  }
+  
+
+.emoji-button {
+  font-size: 20px; 
+  line-height: 20px; 
+}
+
+#backBtn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  margin-left: 20px;
+  background-color: #798779;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#backBtn:hover {
+  background-color: #45a049; 
+  transform: scale(1.05); /* Scale effect on hover */
+}

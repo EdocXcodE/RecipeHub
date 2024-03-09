@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Search</title>
+    <link rel="stylesheet" href="../css/genericStyle.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 class="title" id="welcomeTitle">Welcome, Let's Begin Recipe Hunt</h1>
+            <button id="logoutButton">Logout</button>
+            <!-- Chatbot icon/button -->
+            <button id="chatbotButton">&#128100;</button>
+        </div>
+        <input type="text" id="searchInput" placeholder="Enter ingredients or keywords">
+        <button id="searchButton">Search</button>
+        <div id="resultsContainer" class="results-container"></div>
+        <button id="discussButton">Discuss</button>
+        <button id="savedRecipesBtn" class="saved-recipes-btn">Favourites</button>
+        <div id="loading" class="loading">Loading...</div>
+        <!-- Chatbot window -->
+        <div id="chatbotWindow" class="chatbot-window">
+            <div id="chatMessages" class="chat-messages"></div>
+            <input type="text" id="chatInput" placeholder="Ask Anything....">
+            <button id="sendButton">Send</button>
+        </div>
+    </div>
+
+    <script src="../js/homePage.js"></script>
+</body>
+</html>
+

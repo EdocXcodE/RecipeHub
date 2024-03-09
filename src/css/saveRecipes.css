@@ -1,0 +1,191 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif, ;
+    background-color: #f0f0f0;
+    text-align: center; /* Center align text */
+}
+
+.container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 50px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative; /* Ensure relative positioning for absolute positioning of buttons */
+}
+
+@keyframes rainbow {
+    0% { color: red; }
+    30% { color: green; }
+    50% { color: indigo; }
+    100% { color: green; }
+}
+
+h1 {
+    font-size: 40px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    animation: rainbow 10s infinite; /* Change color every 10 seconds */
+    border: 2px solid rgb(82, 77, 89); /* Add border */
+    border-radius: 10px; /* Add border radius for rounded corners */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow */
+}
+
+h1:hover{
+transform: scale(1.05);
+}
+
+h2 {
+    font-size: 30px;
+    margin-top: 0px;
+    margin-bottom: 50px;
+    font-family: 'Times New Roman', serif;
+}
+
+
+
+.saved-recipes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+}
+
+.saved-recipe {
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.saved-recipe:hover {
+    transform: translateY(-5px);
+}
+
+.saved-recipe img {
+    display: grid;
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#goBackBtn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #798779;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#goBackBtn:hover {
+    background-color: #45a049;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.loading {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 24px;
+    color: #fff;
+    background: linear-gradient(135deg, #00f0ff, #0080ff, #00ff80, #ff8000, #ff0040, #00f0ff);
+    background-size: 600% 600%;
+    animation: loadingAnimation 4s ease infinite;
+}
+
+@keyframes loadingAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.full-recipe-btn {
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Hover effect */
+.full-recipe-btn:hover {
+    background-color: #45a049; /* Darker green */
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+/* Add this to your CSS file */
+.delete-items-btn,
+.leave-delete-mode-btn {
+    display: inline; /* Initially hide the buttons */
+    margin-top: 10px; /* Add some top margin */
+    padding: 10px 20px;
+    border: rgb(69, 119, 162);
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+/* Style for Delete button */
+.delete-items-btn {
+    background-color: #db2906;
+    color: white;
+}
+
+/* Style for Leave button */
+.leave-delete-mode-btn {
+    display: none;
+    background-color: #4CAF50;
+    color: white;
+}
+
+/* Hover effects */
+.delete-items-btn:hover,
+.leave-delete-mode-btn:hover {
+    filter: brightness(1.1);
+    transform: scale(1.05);
+}
+
+.delete-btn {
+    background-color: rgb(171, 158, 157);
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.delete-btn:hover {
+    background-color: #db2906;
+    filter: brightness(1.1);
+    transform: scale(1.05);
+   
+}

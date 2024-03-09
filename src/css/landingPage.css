@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../../images/projBG.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: backgroundSlide 20s infinite linear;
+}
+
+.container {
+    max-width: 800px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s;
+}
+
+.header {
+    text-align: center;
+    animation: headerMove 2s ease-out;
+}
+
+.content {
+    text-align: center;
+    animation: contentSlide 3s ease-out;
+}
+
+h1 {
+    color: #4CAF50;
+    font-size: 3rem;
+}
+
+.slogan {
+    color: #555;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.quote {
+    font-style: italic;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.description {
+    color: #333;
+    margin-bottom: 30px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+@keyframes backgroundSlide {
+    0% {
+        background-position: top;
+    }
+    100% {
+        background-position: bottom;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes headerMove {
+    0% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes contentSlide {
+    0% {
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
