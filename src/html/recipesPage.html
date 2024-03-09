@@ -10,15 +10,18 @@
 <body>
     <div id="loading" class="loading">Loading...</div>
     <div class="container hidden">   
-         <div id="loading" class="loading">Loading...</div>
-        <h1 class="title hidden">Recipes are Here, Enjoy :)</h1>
-        <div id="filterContainer" class="filter-container hidden">
+        <h1 class="title">Recipes are Here, Enjoy :)</h1>
+        <div id="loadingContainer" class="loading">Loading...</div>
+        <div id="filterContainer" class="filter-container">
             <input type="text" id="filterInput" placeholder="Filter recipes...">
         </div>
-        <div id="resultsContainer" class="results-container hidden"></div>
+        <div id="resultsContainer" class="results-container"></div>
   
-        <button id="savedRecipesBtn" class="saved-recipes-btn hidden">Favourites</button>
+        <button id="savedRecipesBtn" class="saved-recipes-btn">Favourites</button>
         <button id="backBtn">Back</button>
+        <button id="prevBtn">Prev</button>
+        <button id="nxtBtn">Next</button>
+        <span id="paginationDetails"></span>
         <script src="../js/recipesPage.js"></script>
     </div>
 </body>

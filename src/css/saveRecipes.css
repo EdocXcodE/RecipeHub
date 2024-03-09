@@ -138,7 +138,6 @@ h2 {
     transform: scale(1.05);
 }
 
-/* Add this to your CSS file */
 .delete-items-btn,
 .leave-delete-mode-btn {
     display: inline; /* Initially hide the buttons */
