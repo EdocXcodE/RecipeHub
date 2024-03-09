@@ -11,10 +11,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const sendButton = document.getElementById('sendButton');
     const chatMessages = document.getElementById('chatMessages');
     var flag = true;
+    const introVideo = document.getElementById('introVideo');
+    const videoContainer = document.getElementById('introVideo');
 
     const apiKey = 'AIzaSyCeYibcJGRyRAjhSA2nfwne1IXgTHvPbRA';
     const welcMsg = 'Hi! I am here to answer all your queries.';
-    // Show/hide chatbot window
+
+    // After the video ends, hide the video and show the chatbot window
+    introVideo.addEventListener('ended', function() {
+        videoContainer.style.display = 'none';
+        chatbotWindow.classList.add('open');
+    });
     
     chatbotButton.addEventListener('click', function() {
         chatbotWindow.classList.toggle('open');

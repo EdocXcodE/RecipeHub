@@ -7,21 +7,27 @@
     <link rel="stylesheet" href="../css/genericStyle.css">
 </head>
 <body>
+    <button id="discussButton">Discuss</button>
+    <button id="savedRecipesBtn" class="saved-recipes-btn">Favourites</button>
+    <button id="logoutButton">Logout</button>
     <div class="container">
         <div class="header">
             <h1 class="title" id="welcomeTitle">Welcome, Let's Begin Recipe Hunt</h1>
-            <button id="logoutButton">Logout</button>
+
             <!-- Chatbot icon/button -->
             <button id="chatbotButton">&#128100;</button>
         </div>
         <input type="text" id="searchInput" placeholder="Enter ingredients or keywords">
         <button id="searchButton">Search</button>
         <div id="resultsContainer" class="results-container"></div>
-        <button id="discussButton">Discuss</button>
-        <button id="savedRecipesBtn" class="saved-recipes-btn">Favourites</button>
+        
         <div id="loading" class="loading">Loading...</div>
         <!-- Chatbot window -->
         <div id="chatbotWindow" class="chatbot-window">
+            <video id="introVideo" width="100%" height="100%" autoplay muted>
+                <source src="../../videos/chat-bot.mp4" type="video/mp4">
+            </video>
+            
             <div id="chatMessages" class="chat-messages"></div>
             <input type="text" id="chatInput" placeholder="Ask Anything....">
             <button id="sendButton">Send</button>

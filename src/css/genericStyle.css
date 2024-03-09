@@ -5,6 +5,22 @@ body {
   background: white;
   background-size: cover;
   text-align: center;
+  background-image: url('../../images/logBg.jpg');
+  background-position: center;
+  animation: backgroundSlide 100s infinite linear;
+  background-position: center; 
+  background-attachment: fixed; 
+}
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .container {
@@ -12,10 +28,11 @@ position: relative;
   max-width: 900px;
   margin: 200px auto;
   padding: 100px;
-  background-color: rgba(255, 255, 255, 0.978);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 height: 100%;
+animation: slideInFromTop 1s;
 }
 
 .title {
@@ -40,8 +57,8 @@ height: 100%;
 
 
 #searchInput {
-margin: 0 auto; /* Center the button horizontally */
-display: block; /* Ensure it behaves like a block element */
+  margin: 0 auto; /* Center the button horizontally */
+  display: block; /* Ensure it behaves like a block element */
   width: 50%;
   padding: 10px;
   margin-bottom: 40px;
@@ -49,25 +66,73 @@ display: block; /* Ensure it behaves like a block element */
   border-radius: 5px;
   font-size: 18px;
   text-align: center; /* Center the text */
+  background-color: transparent; /* Transparent background */
+  border-bottom: 2px solid #ccc; /* Bottom border */
+  transition: border-color 0.3s ease, transform 0.5s ease; /* Smooth transition for border color and transform */
 }
+
+#searchInput:focus {
+  outline: none; /* Remove default focus outline */
+  border-color: #ff7f50; /* Change border color on focus */
+  transform: scale(1.05); /* Increase size on focus */
+}
+
+#searchInput::placeholder {
+  transition: color 0.5s ease; 
+}
+
+#searchInput:focus::placeholder {
+  color: #ccc; 
+}
+
 
 #searchButton {
-background-color: #27ca34;
-color: white;
-width: 30%;
-padding: 10px;
-margin: 0 auto; /* Center the button horizontally */
-display: block; /* Ensure it behaves like a block element */
-border: none;
-border-radius: 5px;
-font-size: 18px;
+  background-color: #27ca34;
+  color: white;
+  width: 30%;
+  padding: 10px;
+  margin: 0 auto; /* Center the button horizontally */
+  display: block; /* Ensure it behaves like a block element */
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+#searchButton::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transition: width 0.3s ease, height 0.3s ease, top 0.3s ease, left 0.3s ease;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+#searchButton:hover::before {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+}
+
+#searchButton span {
+  position: relative;
+  z-index: 1;
+}
 
 #searchButton:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
+  background-color: #23a22e;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
+
 
 #logoutButton {
   position: fixed;
@@ -169,17 +234,18 @@ transform: scale(1.05);
 
 
 .container .recipe button {
-  display: inline; /* Initially hide the buttons */
-  margin-top: 10px; /* Add some top margin */
+  display: inline; 
+  margin-top: 10px; 
   padding: 10px 20px;
   border: rgb(69, 119, 162);
   border-radius: 5px;
-  font-size: 16px;
+  font-size: 15px;
   margin-bottom: 20px;
   cursor: pointer;
-  margin-left: 12px;
+  margin-left: 10px;
   transition: background-color 0.3s, transform 0.2s;
 }
+
 
 
 .container .recipe button:hover {
@@ -203,10 +269,29 @@ transform: scale(1.05);
   
 }
 
-
 .saved-recipes-btn:hover {
   background-color: #45a049;
   transform: scale(1.05);
+}
+
+#youtubeButton {
+  display: inline;
+  width: 10px; 
+  height: 40px; 
+  background-image: url('../../images/ytIcon.png'); 
+  background-position: center;
+  margin-top: 10px;
+
+}
+
+#googleButton {
+  display: inline;
+  width: 10px; 
+  height: 40px; 
+  background-image: url('../../images/google.png'); 
+  background-position: center; 
+   background-size: cover;
+  margin-top: 10px;
 }
 
 .hidden {
@@ -257,7 +342,6 @@ transform: scale(1.05);
   box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
 }
 
-/* Style for chatbot window */
 #chatbotWindow {
   display: none;
   position: fixed;
@@ -265,14 +349,13 @@ transform: scale(1.05);
   right: 20px;
   width: 600px;
   height: 600px;
-  background-color: #fff;
+  background-color: rgba(249, 249, 249, 0.9); 
   border: 1px solid #ccc;
   border-radius: 5px;
   overflow-y: scroll;
   padding: 10px;
   margin-bottom: 35px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
   animation: slideIn 0.5s forwards, fadeIn 0.5s forwards;
 }
 
@@ -533,4 +616,37 @@ font-weight: bold;
 color: #6e7376;
 padding-bottom: 5px;
 }
+
+#introVideo {
+  width: 100%;
+  height: 100%;
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-overlay p {
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+}
+
+
+
+
 

@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nxtBtn = document.getElementById('nxtBtn');
     const paginationDetails = document.getElementById('paginationDetails');
     let currentPage = 1;
-    const recipesPerPage = 30;
+    const recipesPerPage = 15;
     let totalPages;
     let isLoading = false;
 
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to fetch recipes from the API
     function fetchRecipes(query) {
-        const API_KEY = 'c3b08af8539347bea8957ae5164a77c5'; // Replace with your API key
+        const API_KEY = 'b400173f7fb143c6b8e8dee1911c3701'; // Replace with your API key
         const API_URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&number=1000`;
 
         fetch(API_URL)
@@ -135,6 +135,18 @@ document.addEventListener('DOMContentLoaded', function() {
                 saveRecipe(recipe);
             });
 
+            const ytButton = document.createElement('button');
+            ytButton.id = 'youtubeButton';
+            ytButton.onclick = function() {
+                searchYoutube(recipe.title);
+            };
+
+            const googleButton = document.createElement('button');
+            googleButton.id = 'googleButton';
+            googleButton.onclick = function() {
+                searchGoogle(recipe.title);
+            };
+            
             const title = document.createElement('h3');
             title.textContent = recipe.title;
 
@@ -142,6 +154,8 @@ document.addEventListener('DOMContentLoaded', function() {
             imageDiv.appendChild(title);
             imageDiv.appendChild(fullRecipeBtn);
             imageDiv.appendChild(saveBtn);
+            imageDiv.appendChild(ytButton);
+            imageDiv.appendChild(googleButton);
             resultsContainer.appendChild(imageDiv);
         });
        
@@ -166,11 +180,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function searchYoutube(recipeTitle) {   
+        const searchQuery = encodeURIComponent(recipeTitle);
+        const youtubeUrl = `https://www.youtube.com/results?search_query=${searchQuery}`;
+
+        window.open(youtubeUrl, '_blank');
+    }
+
+    function searchGoogle(recipeTitle) {   
+        const searchQuery = encodeURIComponent(recipeTitle);
+        const googleUrl = `https://www.google.com/search?q=${searchQuery}`;
+
+        window.open(googleUrl, '_blank');
+    }
+    
+
     // Function to open source URL
     window.openFullRecipe = function(recipeId) {
         showLoading(); // Show loading indicator
 
-        const API_KEY = 'c3b08af8539347bea8957ae5164a77c5'; // Replace with your API key
+        const API_KEY = 'b400173f7fb143c6b8e8dee1911c3701'; // Replace with your API key
         const API_URL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}&includeNutrition=false`;
 
         fetch(API_URL)

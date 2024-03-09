@@ -2,7 +2,10 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-image: url('../../images/logBg.jpg');
+    background-size: cover;
+    background-position: center;
+    animation: backgroundSlide 20s infinite linear;
 }
 
 .container {
@@ -11,6 +14,8 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    border-radius: 15px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
 }
 
 .container h1 {
@@ -18,15 +23,16 @@ body {
     margin-bottom: 30px;
     color: #262323;
     font-size: 30px;
-    
+    transition: color 0.3s, transform 0.4s; /* Smooth transitions */
 }
 
 .container form {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent form */
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    width: 300px; 
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    width: 300px;
+    transition: background-color 0.3s, box-shadow 0.3s; /* Smooth transitions */
 }
 
 .container form input {
@@ -34,9 +40,16 @@ body {
     width: 92%;
     padding: 10px;
     margin-bottom: 30px;
-    border: 2px solid #ccc;
+    border: 2px solid rgba(204, 204, 204, 0.8); /* Semi-transparent border */
     border-radius: 5px;
     font-size: 16px;
+    transition: border-color 0.3s, transform 0.2s; /* Smooth transitions */
+}
+
+.container form input:hover,
+.container form input:focus {
+    border-color: #3fb1d1; /* Change border color on hover and focus */
+    transform: scale(1.02); /* Slightly scale up on hover and focus */
 }
 
 .container form button {
@@ -48,64 +61,38 @@ body {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s; /* Smooth transitions */
 }
 
 .container form button:hover {
     background-color: #0f140f;
-}
-
-.container form button:hover {
-    background-color: #6a98d7;
     transform: translateY(-2px);
     box-shadow: 0px 4px 8px rgba(147, 48, 48, 0.1);
 }
 
-/* Hover effect for input fields */
-.container form input:hover {
-    border-color: #131f14;
+.container form button:active {
+    transform: translateY(0); /* Reset transform on button click */
 }
 
-/* Hover effect for the register title */
 .container h1:hover {
     color: #3fb1d1;
-    transform: scale(1.25);
-    transition: transform 0.4s ease-in-out, color 0.3s ease-in-out;
+    transform: scale(1.05); /* Slightly scale up on hover */
 }
 
 
-.full-recipe-btn {
-    background-color: #4CAF50; /* Green background */
-    border: none;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin-top: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
 
-/* Hover effect */
-.full-recipe-btn:hover {
-    background-color: #45a049; /* Darker green */
-}
-
-/* Style for the "Register Now" link */
-.login-link,.register-link {
+.login-link,
+.register-link {
     display: block;
     margin-top: 20px;
     text-align: center;
-    color: #384048; /* Blue color for the link */
-    text-decoration: none; 
-    transition: color 0.3s; /* Smooth transition for color change */
+    color: #384048;
+    text-decoration: none;
+    transition: color 0.3s, transform 0.2s; /* Smooth transitions */
 }
 
-.login-link:hover,.register-link:hover {
-    color: #0056b3; /* Darker blue color on hover */
-    transform: scale(1.1)
+.login-link:hover,
+.register-link:hover {
+    color: #0056b3;
+    transform: scale(1.1);
 }
-
-
