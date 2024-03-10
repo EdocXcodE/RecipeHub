@@ -7,17 +7,19 @@ body {
     background-image: url('../../images/logBg.jpg');
     background-position: center; /* Center the background */
     background-attachment: fixed;
-}
+} 
 
 .container {
-    max-width: 800px;
+    max-width: 950px;
     margin: 100px auto;
     padding: 50px;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent background */
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     position: relative; /* Ensure relative positioning for absolute positioning of buttons */
+    animation: rainbow 5s infinite alternate; /* Rainbow text animation */
 }
+
 
 @keyframes rainbow {
     0% { color: red; }
@@ -46,7 +48,6 @@ h2 {
     margin-bottom: 50px;
     font-family: 'Times New Roman', serif;
 }
-
 
 
 .saved-recipes-container {
@@ -121,18 +122,18 @@ h2 {
     }
 }
 
-.full-recipe-btn {
-    display: block;
-    margin: 0 auto;
-    margin-top: 20px;
-    margin-bottom: 10px;
+.saved-recipe button {
+    display:inline;
+    position:relative;
+    margin: 10px 10px 20px 0; /* Adjust margin for spacing */
     padding: 10px 20px;
-    border: none;
+    border: rgb(69, 119, 162);
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.2s;
 }
+
 
 /* Hover effect */
 .full-recipe-btn:hover {
@@ -144,7 +145,7 @@ h2 {
 .delete-items-btn,
 .leave-delete-mode-btn {
     display: inline; /* Initially hide the buttons */
-    margin-top: 10px; /* Add some top margin */
+    margin-top: 40px; /* Add some top margin */
     padding: 10px 20px;
     border: rgb(69, 119, 162);
     border-radius: 5px;
@@ -190,4 +191,70 @@ h2 {
     filter: brightness(1.1);
     transform: scale(1.05);
    
+}
+
+
+.summary-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    max-width: 80%;
+}
+
+.summary-popup h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333; 
+}
+
+.summary-popup p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333; 
+}
+
+
+.summary-popup:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    transform: translate(-50%, -50%) scale(1.05);
+}
+
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #666; 
+}
+
+.close-btn:hover {
+    color: #333; 
+}
+
+.summarize-recipe-btn {
+    border: rgb(69, 119, 162);
+    color: #333333; 
+    border: 2px solid #333333; 
+    border-radius: 50%; 
+    padding: 10px; 
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.summarize-recipe-btn:hover {
+    background-color: #333333; 
+    color: #ffffff; 
+    transform: scale(1.1); 
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3); 
 }
