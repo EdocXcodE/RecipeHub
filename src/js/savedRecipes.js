@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function summaryRecipe(recipeId) {
-        const API_KEY = 'b400173f7fb143c6b8e8dee1911c3701'; // Replace with your API key
+        const API_KEY = 'fd27a96f0f1f4572b4c4b762706176c5'; // Replace with your API key
         const API_URL = `https://api.spoonacular.com/recipes/${recipeId}/summary?apiKey=${API_KEY}`;
     
         fetch(API_URL)

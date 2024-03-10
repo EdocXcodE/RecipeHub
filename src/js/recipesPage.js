@@ -9,9 +9,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const nxtBtn = document.getElementById('nxtBtn');
     const paginationDetails = document.getElementById('paginationDetails');
     let currentPage = 1;
-    const recipesPerPage = 15;
+    const recipesPerPage = 30;
     let totalPages;
-    let isLoading = false;
 
     // Function to handle recipe search
      function searchRecipes(query) {
@@ -44,8 +43,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let recipe=[];
         for (let i = startIndex; i < endIndex; i++) {
             recipe[i] = data.results[i];
-            displayRecipes(recipe);
         }
+        displayRecipes(recipe);
         // Update pagination details
         updatePaginationDetails();
 
@@ -79,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to fetch recipes from the API
     function fetchRecipes(query) {
-        const API_KEY = 'b400173f7fb143c6b8e8dee1911c3701'; // Replace with your API key
+        const API_KEY = 'fd27a96f0f1f4572b4c4b762706176c5'; // Replace with your API key
         const API_URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&number=1000`;
 
         fetch(API_URL)
@@ -199,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
     window.openFullRecipe = function(recipeId) {
         showLoading(); // Show loading indicator
 
-        const API_KEY = 'b400173f7fb143c6b8e8dee1911c3701'; // Replace with your API key
+        const API_KEY = 'fd27a96f0f1f4572b4c4b762706176c5'; // Replace with your API key
         const API_URL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}&includeNutrition=false`;
 
         fetch(API_URL)
