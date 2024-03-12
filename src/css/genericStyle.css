@@ -281,7 +281,6 @@ transform: scale(1.05);
   background-image: url('../../images/ytIcon.png'); 
   background-position: center;
   margin-top: 10px;
-
 }
 
 #googleButton {
@@ -303,18 +302,8 @@ transform: scale(1.05);
   text-align: center;
 }
 
-.filter-container input[type="text"] {
-  padding: 10px;
-  width: 80%;
-  max-width: 300px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  box-sizing: border-box;
-}
-
 .filter-container {
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   text-align: center;
   border-radius: 8px;
   padding: 10px;
@@ -645,6 +634,41 @@ padding-bottom: 5px;
   font-size: 24px;
   text-align: center;
 }
+
+/* Styling for the advanced filter button */
+.advanced-filter-btn {
+ /* Green */
+  background-color: #9ba79c;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 30px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.advanced-filter-btn:hover {
+  background-color: #4CAF50;
+}
+
+/* Styling for the filter options */
+.filter-options {
+  display: none;
+   margin: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.filter-options.active {
+  display: block;
+}
+
+
 
 
 

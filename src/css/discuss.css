@@ -66,6 +66,12 @@ body::before {
     clear: both;
 }
 
+.chat-bubble img {
+    max-width: 400px; 
+    max-height: 400px; 
+    object-fit: cover; 
+}
+
 .user-message {
     float: right;
     background-color: #007bff;
@@ -157,7 +163,8 @@ body::before {
 
 
 .container {
-    max-width: 700px;
+    max-height: 1000px;
+    max-width: 900px;
     margin: 100px auto;
     padding: 20px;
     border: 1px solid #ccc;

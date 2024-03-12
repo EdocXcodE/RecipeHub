@@ -8,9 +8,24 @@ document.addEventListener('DOMContentLoaded', function() {
     const prevBtn = document.getElementById('prevBtn');
     const nxtBtn = document.getElementById('nxtBtn');
     const paginationDetails = document.getElementById('paginationDetails');
+    const advancedFilterBtn = document.getElementById('advancedFilterBtn');
+    const filterOptions = document.getElementById('filterOptions');
+    
+    // Event listeners for advanced filter checkboxes
+    const vegetarianCheckbox = document.getElementById('vegetarianCheckbox');
+    const veganCheckbox = document.getElementById('veganCheckbox');
+    const glutenFreeCheckbox = document.getElementById('glutenFreeCheckbox');
+    const dairyFreeCheckbox = document.getElementById('dairyFreeCheckbox');
+    const veryHealthyCheckbox = document.getElementById('veryHealthyCheckbox');
+    const cheapCheckbox = document.getElementById('cheapCheckbox');
+    const veryPopularCheckbox = document.getElementById('veryPopularCheckbox');
+    const sustainableCheckbox = document.getElementById('sustainableCheckbox');
+    const filterInput = document.getElementById('filterInput');
     let currentPage = 1;
     const recipesPerPage = 30;
     let totalPages;
+    let isLoading = false;
+    let recipeData = {};
 
     // Function to handle recipe search
      function searchRecipes(query) {
@@ -39,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const startIndex = (currentPage - 1) * recipesPerPage;
         const endIndex = Math.min(startIndex + recipesPerPage, data.results.length);
-        console.log(data);
         let recipe=[];
         for (let i = startIndex; i < endIndex; i++) {
             recipe[i] = data.results[i];
@@ -79,8 +93,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch recipes from the API
     function fetchRecipes(query) {
         const API_KEY = 'fd27a96f0f1f4572b4c4b762706176c5'; // Replace with your API key
-        const API_URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&number=1000`;
-
+        const API_URL = `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${query}&number=1000&addRecipeInformation=true`;
+        
         fetch(API_URL)
             .then(response => {
                 if (!response.ok) {
@@ -113,15 +127,15 @@ document.addEventListener('DOMContentLoaded', function() {
         hideLoadingCont();
         resultsContainer.innerHTML = '';
         hiddenRemove();
-
-        results.forEach(recipe => {
+        results.forEach((recipe) => {
+  
             const imageDiv = document.createElement('div');
             imageDiv.classList.add('recipe');
 
             const image = document.createElement('img');
             image.src = recipe.image;
             image.alt = recipe.title;
-
+            
             const fullRecipeBtn = document.createElement('button');
             fullRecipeBtn.textContent = 'Full Recipe';
             fullRecipeBtn.addEventListener('click', function() {
@@ -148,6 +162,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             const title = document.createElement('h3');
             title.textContent = recipe.title;
+            imageDiv.dataset.recipeId = recipe.id;
+
+                const trueFields = Object.entries(recipe)
+                    .filter(([key, value]) => value === true)
+                    .map(([key]) => key);
+    
+                recipeData[recipe.id] = trueFields;
 
             imageDiv.appendChild(image);
             imageDiv.appendChild(title);
@@ -157,7 +178,8 @@ document.addEventListener('DOMContentLoaded', function() {
             imageDiv.appendChild(googleButton);
             resultsContainer.appendChild(imageDiv);
         });
-       
+
+        updateDisplayedRecipes();
  
         if(results.length==0){
 
@@ -200,7 +222,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const API_KEY = 'fd27a96f0f1f4572b4c4b762706176c5'; // Replace with your API key
         const API_URL = `https://api.spoonacular.com/recipes/${recipeId}/information?apiKey=${API_KEY}&includeNutrition=false`;
-
+     
         fetch(API_URL)
             .then(response => {
                 if (!response.ok) {
@@ -299,38 +321,72 @@ function saveRecipe(recipe) {
             isLoading = false;
         }
 
-    function filterRecipes() {
-        const filterInput = document.getElementById('filterInput');
+
+        advancedFilterBtn.addEventListener('click', function() {
+            filterOptions.classList.toggle('active');
+            
+            // Change button text based on the state
+            if (filterOptions.classList.contains('active')) {
+              advancedFilterBtn.textContent = 'Hide Advanced Filters';
+            } else {
+              advancedFilterBtn.textContent = 'Advanced Filters';
+            }
+          });
+        
+
+    filterInput.addEventListener('input', updateDisplayedRecipes);
+    vegetarianCheckbox.addEventListener('change', updateDisplayedRecipes);
+    veganCheckbox.addEventListener('change', updateDisplayedRecipes);
+    glutenFreeCheckbox.addEventListener('change', updateDisplayedRecipes);
+    dairyFreeCheckbox.addEventListener('change', updateDisplayedRecipes);
+    veryHealthyCheckbox.addEventListener('change', updateDisplayedRecipes);
+    cheapCheckbox.addEventListener('change', updateDisplayedRecipes);
+    veryPopularCheckbox.addEventListener('change', updateDisplayedRecipes);
+    sustainableCheckbox.addEventListener('change', updateDisplayedRecipes);
+
+    function updateDisplayedRecipes() {
         const filterValue = filterInput.value.toLowerCase();
         const recipeDivs = resultsContainer.querySelectorAll('.recipe');
         let hasMatch = false;
-    
+
         recipeDivs.forEach(recipeDiv => {
             const title = recipeDiv.querySelector('h3').textContent.toLowerCase();
-            if (title.includes(filterValue)) {
+            const recipeId = parseInt(recipeDiv.dataset.recipeId);
+            const recipeFilters = recipeData[recipeId] || []; // Get filters for the recipe
+
+            // Check if the recipe title matches the search filter
+            const titleMatches = title.includes(filterValue);
+
+            // Check if the recipe matches the selected advanced filters
+            const filtersMatch = [
+                !vegetarianCheckbox.checked || recipeFilters.includes('vegetarian'),
+                !veganCheckbox.checked || recipeFilters.includes('vegan'),
+                !glutenFreeCheckbox.checked || recipeFilters.includes('glutenFree'),
+                !dairyFreeCheckbox.checked || recipeFilters.includes('dairyFree'),
+                !veryHealthyCheckbox.checked || recipeFilters.includes('veryHealthy'),
+                !cheapCheckbox.checked || recipeFilters.includes('cheap'),
+                !veryPopularCheckbox.checked || recipeFilters.includes('veryPopular'),
+                !sustainableCheckbox.checked || recipeFilters.includes('sustainable'),
+            ].every(Boolean);
+
+            // Show/hide the recipe based on search filter and advanced filters
+            if (titleMatches && filtersMatch) {
                 recipeDiv.style.display = 'block';
                 hasMatch = true;
             } else {
                 recipeDiv.style.display = 'none';
             }
         });
-    
-        if (!hasMatch) {
-            // Create a paragraph element to display the message
+
+        // Show a message if there are no matching recipes
+        const noMatchParagraph = resultsContainer.querySelector('.no-match-message');
+        if (!hasMatch && !noMatchParagraph) {
             const noMatchParagraph = document.createElement('p');
             noMatchParagraph.textContent = 'No results match your search.';
-            // Check if the message already exists, if not append it
-            const existingMessage = resultsContainer.querySelector('.no-match-message');
-            if (!existingMessage) {
-                resultsContainer.appendChild(noMatchParagraph);
-                noMatchParagraph.classList.add('no-match-message');
-            }
-        } else {
-            // Remove the message if it exists
-            const existingMessage = resultsContainer.querySelector('.no-match-message');
-            if (existingMessage) {
-                existingMessage.remove();
-            }
+            noMatchParagraph.classList.add('no-match-message');
+            resultsContainer.appendChild(noMatchParagraph);
+        } else if (hasMatch && noMatchParagraph) {
+            noMatchParagraph.remove();
         }
     }
 
@@ -345,10 +401,6 @@ function saveRecipe(recipe) {
     nxtBtn.addEventListener('click', function() {
         nextPage();
     });
-
-    // Event listener for input events on the filter input field
-    const filterInput = document.getElementById('filterInput');
-    filterInput.addEventListener('input', filterRecipes);
 
     
     // Get the search query parameter from the URL
@@ -370,4 +422,5 @@ function saveRecipe(recipe) {
     } else {
         console.error('Saved Recipes button not found.');
     }
+    
 });
